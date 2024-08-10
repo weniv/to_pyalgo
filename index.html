@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+  
+  <meta name="description"
+    content="왕좌에 앉으려는 자! 자격을 증명하라! 알고리즘 문제 풀이를 통해 파이와 썬이 숨겨둔 모든 알고리즘을 해독할 수 있는 알고리즘 7원석을 얻고, 알고리즘 왕좌를 쟁취해 보세요!">
+  <meta name="keywords" content="코딩 교육, 코딩, 프로그래밍, 알고리즘, 파이썬, 위니브">
+  <meta name="image" content="https://100.pyalgo.co.kr/src/img/meta.webp">
+  <meta name="url" content="https://100.pyalgo.co.kr">
+  
+  <meta name="og:title" property="og:title" content="Python Algorithm 100 | WENIV">
+  <meta name="og:description" property="og:description"
+    content="왕좌에 앉으려는 자! 자격을 증명하라! 알고리즘 문제 풀이를 통해 파이와 썬이 숨겨둔 모든 알고리즘을 해독할 수 있는 알고리즘 7원석을 얻고, 알고리즘 왕좌를 쟁취해 보세요!">
+  <meta name="og:image" property="og:image" content="https://100.pyalgo.co.kr/src/img/meta.webp">
+  <meta name="og:url" property="og:url" content="https://100.pyalgo.co.kr">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="파이알고100">
+  <meta property="og:locale" content="ko_KR">
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" property="og:title" content="Python Algorithm Basic100 | WENIV">
+  <meta name="twitter:description" property="og:description"
+    content="왕좌에 앉으려는 자! 자격을 증명하라! 알고리즘 문제 풀이를 통해 파이와 썬이 숨겨둔 모든 알고리즘을 해독할 수 있는 알고리즘 7원석을 얻고, 알고리즘 왕좌를 쟁취해 보세요!">
+  <meta name="twitter:image" property="og:image" content="https://100.pyalgo.co.kr/src/img/meta.webp">
+  <meta name="twitter:url" property="og:url" content="https://100.pyalgo.co.kr">
+  <title>Pyalgo100</title>
+  
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J4R0WC3TYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-J4R0WC3TYQ');
+  </script>
+
+  <!-- 환경파일 -->
+  <script src="./src/env.js" defer></script>
+
+  <!-- JavaScript -->
+  <script src="./src/js/editor.js" defer></script>
+  <script src="./src/js/parser.js" defer></script>
+  <script src="./src/js/event.js" defer></script>
+  <script src="./src/js/nav.js" defer></script>
+  <script src="./src/js/ad.js" defer></script>
+  <script src="./src/js/timer.js" defer></script>
+  <script src="./src/js/chat.js" defer></script>
+
+  <!-- markdown -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.26.0/themes/prism.min.css">
+  <link href='https://cdnjs.cloudflare.com/ajax/libs/prism/1.26.0/plugins/toolbar/prism-toolbar.min.css'
+    rel='stylesheet' />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.26.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.26.0/plugins/autoloader/prism-autoloader.min.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/prism/1.26.0/plugins/toolbar/prism-toolbar.min.js'></script>
+  <script
+    src='https://cdnjs.cloudflare.com/ajax/libs/prism/1.26.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js'></script>
+  
+    <!-- codemirror -->
+  <script src="src/codemirror/codemirror.js"></script>
+  <script src="src/codemirror/python.js"></script>
+  <script src="src/codemirror/active-line.js"></script>
+  <link rel="stylesheet" href="src/codemirror/codemirror.css">
+  <link rel="stylesheet" href="src/codemirror/dracula.css">
+  
+  <!-- axios -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  
+  <!-- pyscript -->
+  <link rel="stylesheet" href="src/pyscript/pyscript.css">
+  <script defer src="src/pyscript/pyscript.js"></script>
+  <py-config>
+    terminal = false
+    [[fetch]]
+    from = "./src/py/"
+    files = ["testcase.py"]
+  </py-config>
+  
+<!-- css -->
+  <link rel="stylesheet" href="./src/css/style.css">
+</head>
+<body>
+  <div class="container menu-on">
+    <header>
+      <div>
+        <h1>
+          <a href="index.html">
+            <img class="logo" src="./src/img/py-logo-100.svg" alt="파이썬 알고리즘 100">
+          </a>
+        </h1>
+        <button class="certif-btn">
+          <span class="sr-only">인증서</span>
+        </button>
+        <section class="certif-modal" >
+          <h2>인증서 다운로드</h2>
+          <div class="progress">
+            <p class="sub-tit">진행도</p>
+            <p class="solved-count">
+              <span class="solved">0</span>/100
+            </p>
+            <div class="solved-progressbar">
+              <div class="solved-progressbar-inner">
+              </div>
+            </div>
+          </div>
+          <label class="label-username" for="username" >이름
+            <input type="text" id="username" placeholder="이름을 입력하세요.">
+          </label>
+          <button class="certif-download-btn" >다운로드</button>
+          <button class="close-btn"><span class="sr-only">모달창 닫기</span></button>
+        </section>
+
+        <button class="hamburger-btn">
+          <span class="sr-only">콘텐츠 더보기</span>
+        </button>
+        <!-- <nav class="menu-nav"> -->
+        <div class="menu-list">
+          <p class="menu-title">기능</p>
+          <ul>
+            <li class="menu-item">
+              <button class="btn-download">Solution Download</button>
+            </li>
+            <li class="menu-item">
+              <a class="btn-exec" href="https://notebook.weniv.co.kr/" target="_blank">Run Python</a>
+            </li>
+          </ul>
+          <hr>
+          <p class="menu-title">교육 서비스</p>
+          <ul>
+            <!-- <li class="menu-item">
+                            <a href="https://jsalgo.co.kr/">JSalgo20</a>
+                        </li> -->
+            <!-- <li class="menu-item">
+                            <a href="https://algoview.co.kr/" target="_blank">Algoview</a>
+                        </li> -->
+            <li class="menu-item"><a href="https://pyalgo.co.kr/" target="_blank" rel="noopener noreferrer">Pyalgo20</a>
+            </li>
+            <li class="menu-item"><a href="https://jsalgo.co.kr/" target="_blank" rel="noopener noreferrer">JSalgo20</a>
+            </li>
+            <li class="menu-item"><a href="https://sqlschool.co.kr/" target="_blank" rel="noopener noreferrer">SQooL:
+                SQL School</a></li>
+            <li class="menu-item"><a href="https://flexngrid.com/" target="_blank" rel="noopener noreferrer">FLEX x
+                GRID</a></li>
+            <li class="menu-item"><a href="https://algoview.co.kr/" target="_blank"
+                rel="noopener noreferrer">ALGO.VIEW</a></li>
+            <li class="menu-item"><a href="https://datagenerator.co.kr/" target="_blank"
+                rel="noopener noreferrer">DataGen</a></li>
+          </ul>
+        </div>
+        <!-- </nav> -->
+        <!-- <label for="lang-select" class="sr-only">풀이 언어를 선택하세요.</label>
+                <select class="cta-btn lang-selector" name="langs" id="lang-select">
+                    <option selected name="python" value="python">Python</option>
+                    <option name="javascript" value="javascript">JavaScript</option>
+                </select>
+                <a class="cta-btn btn-algoview" href="https://algoview.co.kr/" target="_blank">Algoview</a>
+                <button class="cta-btn btn-download">Solution Download</button> -->
+        <!-- <a class="cta-btn btn-exec" href="https://notebook.weniv.co.kr/" target="_blank">Run Python</a> -->
+        <button class="btn-fold" type="button">접어두기</button>
+      </div>
+    </header>
+    <div class="contents">
+      <nav class="question-nav">
+        <ol>
+          <li><a href="#" id="q1" class="btn-que">Q1. 더하기</a></li>
+          <li><a href="#" id="q2" class="btn-que">Q2. 곱하기</a></li>
+          <li><a href="#" id="q3" class="btn-que">Q3. 조건 덧셈</a></li>
+          <li><a href="#" id="q4" class="btn-que">Q4. 크리스마스 쿠키</a></li>
+          <li><a href="#" id="q5" class="btn-que">Q5. 1의 갯수 반환</a></li>
+          <li><a href="#" id="q6" class="btn-que">Q6. 문자열 덧셈</a></li>
+          <li><a href="#" id="q7" class="btn-que">Q7. 업무 우선순위</a></li>
+          <li><a href="#" id="q8" class="btn-que">Q8. 두 점 사이의 거리</a></li>
+          <li><a href="#" id="q9" class="btn-que">Q9. 수학은 내가 1등</a></li>
+          <li><a href="#" id="q10" class="btn-que">Q10. 게임 밸런스 조절</a></li>
+          <li><a href="#" id="q11" class="btn-que">Q11. 평균 점수 카운팅</a></li>
+          <li><a href="#" id="q12" class="btn-que">Q12. 우편 번호 정렬</a></li>
+          <li><a href="#" id="q13" class="btn-que">Q13. 도서관 책 연도별 정렬</a></li>
+          <li><a href="#" id="q14" class="btn-que">Q14. 도서관 책 코드별 정렬</a></li>
+          <li><a href="#" id="q15" class="btn-que">Q15. 위니브 회의 시간표 정렬</a></li>
+          <li><a href="#" id="q16" class="btn-que">Q16. 뮤라의 휴가 입력</a></li>
+          <li><a href="#" id="q17" class="btn-que">Q17. 라이캣 CEO의 최근일정 3개</a></li>
+          <li><a href="#" id="q18" class="btn-que">Q18. 주간 최고 온도 기록 분석</a></li>
+          <li><a href="#" id="q19" class="btn-que">Q19. 데이터 타입 확인</a></li>
+          <li><a href="#" id="q20" class="btn-que">Q20. 타입 확인</a></li>
+          <li><a href="#" id="q21" class="btn-que">Q21. 숫자 배열 탐색</a></li>
+          <li><a href="#" id="q22" class="btn-que">Q22. 문자열 탐색</a></li>
+          <li><a href="#" id="q23" class="btn-que">Q23. 2차원 배열 탐색</a></li>
+          <li><a href="#" id="q24" class="btn-que">Q24. 연속 수열의 최대합</a></li>
+          <li><a href="#" id="q25" class="btn-que">Q25. 소수 판별</a></li>
+          <li><a href="#" id="q26" class="btn-que">Q26. 최대 합계 배열 찾기</a></li>
+          <li><a href="#" id="q27" class="btn-que">Q27. 작은 길이 부분 배열 찾기</a></li>
+          <li><a href="#" id="q28" class="btn-que">Q28. 가장 가까운 합 찾기</a></li>
+          <li><a href="#" id="q29" class="btn-que">Q29. 단일 숫자 찾기</a></li>
+          <li><a href="#" id="q30" class="btn-que">Q30. 비트 치환 문제</a></li>
+          <li><a href="#" id="q31" class="btn-que">Q31. 비트 반전 정수</a></li>
+          <li><a href="#" id="q32" class="btn-que">Q32. 비트 연산</a></li>
+          <li><a href="#" id="q33" class="btn-que">Q33. 이메일 주소 검증</a></li>
+          <li><a href="#" id="q34" class="btn-que">Q34. 날짜 패턴 찾기</a></li>
+          <li><a href="#" id="q35" class="btn-que">Q35. HTML 태그 제거</a></li>
+          <li><a href="#" id="q36" class="btn-que">Q36. 전화번호 형식 변환</a></li>
+          <li><a href="#" id="q37" class="btn-que">Q37. 로그파일 분석</a></li>
+          <li><a href="#" id="q38" class="btn-que">Q38. URL 및 쿼리스트링 파싱</a></li>
+          <li><a href="#" id="q39" class="btn-que">Q39. 파일 확장자 추출</a></li>
+          <li><a href="#" id="q40" class="btn-que">Q40. 숫자 추출</a></li>
+          <li><a href="#" id="q41" class="btn-que">Q41. 괄호 짝 맞추기</a></li>
+          <li><a href="#" id="q42" class="btn-que">Q42. 최근 요청 기록 관리</a></li>
+          <li><a href="#" id="q43" class="btn-que">Q43. 최근 사용된 페이지 관리</a></li>
+          <li><a href="#" id="q44" class="btn-que">Q44. 단어 빈도수 세기</a></li>
+          <li><a href="#" id="q45" class="btn-que">Q45. 두 큐의 합 같게 만들기</a></li>
+          <li><a href="#" id="q46" class="btn-que">Q46. 순환 큐에서의 데이터 처리</a></li>
+          <li><a href="#" id="q47" class="btn-que">Q47. 이진 트리의 최대 깊이 찾기</a></li>
+          <li><a href="#" id="q48" class="btn-que">Q48. 이진 트리에서의 경로 합 계산</a></li>
+          <li><a href="#" id="q49" class="btn-que">Q49. 그래프의 최단 경로 찾기</a></li>
+          <li><a href="#" id="q50" class="btn-que">Q50. 그래프 사이클 감지</a></li>
+          <li><a href="#" id="q51" class="btn-que">Q51. 최소 동전 개수 찾기</a></li>
+          <li><a href="#" id="q52" class="btn-que">Q52. 아이스크림 잔돈 계산</a></li>
+          <li><a href="#" id="q53" class="btn-que">Q53. 최대 분산 투자</a></li>
+          <li><a href="#" id="q54" class="btn-que">Q54. 로봇 청소기의 경로 계산</a></li>
+          <li><a href="#" id="q55" class="btn-que">Q55. 행렬 속 지뢰 찾기</a></li>
+          <li><a href="#" id="q56" class="btn-que">Q56. 행렬 속 지뢰 위치 찾기</a></li>
+          <li><a href="#" id="q57" class="btn-que">Q57. 행렬 조건 검사</a></li>
+          <li><a href="#" id="q58" class="btn-que">Q58. 행렬 90도 회전하기</a></li>
+          <li><a href="#" id="q59" class="btn-que">Q59. 행렬 요소의 개수와 합</a></li>
+          <li><a href="#" id="q60" class="btn-que">Q60. 행렬 최댓값과 최솟값</a></li>
+          <li><a href="#" id="q61" class="btn-que">Q61. 데큐</a></li>
+          <li><a href="#" id="q62" class="btn-que">Q62. 데이터 저장 전략</a></li>
+          <li><a href="#" id="q63" class="btn-que">Q63. 문자열 N-gram 생성</a></li>
+          <li><a href="#" id="q64" class="btn-que">Q64. 문자열 패턴 찾기</a></li>
+          <li><a href="#" id="q65" class="btn-que">Q65. 문자열 오른쪽 순환 이동</a></li>
+          <li><a href="#" id="q66" class="btn-que">Q66. 문자열 간단한 압축</a></li>
+          <li><a href="#" id="q67" class="btn-que">Q67. 서브스트링 위치 찾기</a></li>
+          <li><a href="#" id="q68" class="btn-que">Q68. 조합으로 가장 큰 수</a></li>
+          <li><a href="#" id="q69" class="btn-que">Q69. 특정 숫자 조합 찾기</a></li>
+          <li><a href="#" id="q70" class="btn-que">Q70. 특정 범위 조합 찾기</a></li>
+          <li><a href="#" id="q71" class="btn-que">Q71. 중복 문자 제거</a></li>
+          <li><a href="#" id="q72" class="btn-que">Q72. 공통 문자 찾기</a></li>
+          <li><a href="#" id="q73" class="btn-que">Q73. 특정 문자 제거</a></li>
+          <li><a href="#" id="q74" class="btn-que">Q74. 고유 요소 찾기</a></li>
+          <li><a href="#" id="q75" class="btn-que">Q75. 빠진 숫자 찾기</a></li>
+          <li><a href="#" id="q76" class="btn-que">Q76. 배열의 병합(요소 비교)</a></li>
+          <li><a href="#" id="q77" class="btn-que">Q77. 겹치는 선 길이 구하기</a></li>
+          <li><a href="#" id="q78" class="btn-que">Q78. 선 위에 점 확인</a></li>
+          <li><a href="#" id="q79" class="btn-que">Q79. 최대 직사각형 넓이 찾기</a></li>
+          <li><a href="#" id="q80" class="btn-que">Q80. 최대 거리 찾기</a></li>
+          <li><a href="#" id="q81" class="btn-que">Q81. 중간 노드 찾기</a></li>
+          <li><a href="#" id="q82" class="btn-que">Q82. 링크드 리스트 역순 출력</a></li>
+          <li><a href="#" id="q83" class="btn-que">Q83. 최대학점 구성</a></li>
+          <li><a href="#" id="q84" class="btn-que">Q84. 가장 빠른 항공편</a></li>
+          <li><a href="#" id="q85" class="btn-que">Q85. 응급환자 발생</a></li>
+          <li><a href="#" id="q86" class="btn-que">Q86. 알파벳 출현 빈도 정렬</a></li>
+          <li><a href="#" id="q87" class="btn-que">Q87. 숫자 교환</a></li>
+          <li><a href="#" id="q88" class="btn-que">Q88. 숫자를 한글로 변환</a></li>
+          <li><a href="#" id="q89" class="btn-que">Q89. 겹치는 점 구하기</a></li>
+          <li><a href="#" id="q90" class="btn-que">Q90. 피타고라스 삼조</a></li>
+          <li><a href="#" id="q91" class="btn-que">Q91. 팩토리얼 계산</a></li>
+          <li><a href="#" id="q92" class="btn-que">Q92. 피보나치 수열</a></li>
+          <li><a href="#" id="q93" class="btn-que">Q93. 재귀로 리스트 합 구하기</a></li>
+          <li><a href="#" id="q94" class="btn-que">Q94. 재귀로 최대공약수 구하기</a></li>
+          <li><a href="#" id="q95" class="btn-que">Q95. 재귀로 문자열 뒤집기</a></li>
+          <li><a href="#" id="q96" class="btn-que">Q96. 재귀로 콤마 찍기</a></li>
+          <li><a href="#" id="q97" class="btn-que">Q97. 재귀로 이진수 변환하기</a></li>
+          <li><a href="#" id="q98" class="btn-que">Q98. N-Queen 문제</a></li>
+          <li><a href="#" id="q99" class="btn-que">Q99. 부분 수열의 합</a></li>
+          <li><a href="#" id="q100" class="btn-que">Q100. 압축 해제</a></li>
+        </ol>
+      </nav>
+      <main>
+        <section class="description">
+        </section>
+        <section class="editor">
+          <div class="timer-container">
+            <p class="timer-time"><span class="hour">00</span> : <span class="minute">00</span> : <span
+                class="second">00</span></p>
+            <div class="btn-container">
+              <butt class="btn-play">
+                <img src="./src/img/fi-rr-play.webp" alt="타이머 시작">
+              </butt`n>
+              <button class="btn-pause">
+                <img src="./src/img/fi-rr-pause.webp" alt="타이머 일시정지">
+              </button>
+            </div>
+            <button class="btn-reset">
+              <img src="./src/img/fi-rr-refresh.webp" alt="타이머 초기화">
+            </button>
+          </div>
+          <hr class="timer-line">
+          <h2 class="que-tit1">Solution</h2>
+          <form>
+            <div class="state-area">
+              <div class="editor">
+                <label for="codeeditor" class="sr-only">코드에디터</label>
+                <textarea id="codeeditor"></textarea>
+              </div>
+            </div>
+          </form>
+          <div class="test-case">
+            <div>
+              <label for="testcase1">testcase1</label>
+              <input disabled id="testcase1" />
+            </div>
+            <div>
+              <label for="testcase1">testcase2</label>
+              <input disabled id="testcase2" />
+            </div>
+            <div>
+              <label for="testcase1">testcase3</label>
+              <input disabled id="testcase3" />
+            </div>
+          </div>
+          <div class="btn-contain">
+            <button id="btn-run" type="submit">채점하기</button>
+          </div>
+          <div id="result">
+            <h3>Result</h3>
+            <div id="result_info">결과가 이 곳에 표시됩니다.</div>
+            <div id="result_desc"></div>
+          </div>
+          <button class="btn-chatOpen">
+            <img src="./src/img/icon-chatting.webp" alt="인공지능과의 채팅 열기">
+          </button>
+          <img class="chat-info" src="./src/img/chat-ai.webp" alt="">
+          <!-- chat -->
+          <article class="cont-chat close">
+            <h4 class="sr-only">인공지능에게 질문하기</h4>
+            <p class="info"> 💡 복잡한 로직의 답변은 20초 이상의 시간이 걸릴 수 있습니다.</p>
+            <div class="chatroom">
+              <ul class="chat-list">
+              </ul>
+            </div>
+            <form class="inp-chat" method="post">
+              <div>
+                <textarea></textarea>
+                <button type="submit">전송</button>
+              </div>
+            </form>
+            <button class="chat-close">
+              <img src="./src/img/close-wh.webp" alt="채팅방 닫기 ">
+            </button>
+          </article>
+          <div class="kg-carousel">
+            <ul class="kg-list"></ul>
+            <div class="btn-cont">
+              <button class="prev-btn">
+                <img src="./src/img/chevron-prev.webp" alt="광고 뒤로가기" />
+              </button>
+              <button class="next-btn">
+                <img src="./src/img/chevron-next.webp" alt="광고 넘어가기" />
+              </button>
+            </div>
+            <ul class="page-list">
+            </ul>
+          </div>
+          <py-script>
+            import ast
+            #from testCaseAndResult import test
+            from testcase import testcase_and_result
+
+            PAGE_NAME = js.document.querySelector('.active').id[1:]
+
+            def render(*ags):
+                PAGE_NAME = js.document.querySelector('.active').id[1:]
+                try:
+                    TEST_CASE_LEN = len(testcase_and_result[int(PAGE_NAME)]['result'])
+                except:
+                    TEST_CASE_LEN = 3
+                for i in range(3):
+                    js.document.querySelector(f'#testcase{i+1}').value = str(testcase_and_result[int(PAGE_NAME)]['testcase'][i])
+            render()
+
+            def result(*ags, **kws):
+                code = Element("codeeditor").element.innerText
+
+                PAGE_NAME = js.document.querySelector('.active').id[1:]
+
+                answer = testcase_and_result[int(PAGE_NAME)]['result']
+                testCase = testcase_and_result[int(PAGE_NAME)]['testcase']
+
+                code += f'\n[solution(i) for i in {str(testCase)}]'
+                
+                try:
+                    result = multiline_eval(code)
+                    result = ast.literal_eval(result)
+                    resultString = "&lt;p class='que-result'&gt;테스트 케이스 번호 : 통과 여부 (실행값 == 정답값) &lt;&#47;p&gt;"
+                    passing = "&lt;span class='result-pass'&gt; 통과 &lt;&#47;span&gt;"
+                    fail = "&lt;span class='result-fail'&gt; 실패 &lt;&#47;span&gt;"
+                    result_save_localstorage = []
+                    for i, _ in enumerate(answer):
+                        resultString += f"&lt;p class='que-result-{i} checkPass'&gt;test{i+1} : {passing if result[i] == answer[i] else fail}&lt;span class='result-compare'&gt;({result[i]} == {answer[i]})&lt;&#47;span&gt;&lt;&#47;p&gt;"
+                        result_save_localstorage.append(result[i] == answer[i])
+                    js.document.querySelector('#result_desc').innerHTML = resultString
+                    if all(result_save_localstorage):
+                        js.window.localStorage.setItem(f'{PAGE_NAME}_check', '통과')
+                        js.document.getElementById(f'q{PAGE_NAME}').classList.add('success')
+                    else:
+                        js.window.localStorage.removeItem(f'{PAGE_NAME}_check')
+                    render()
+                except Exception as e:
+                    result = f"&lt;p class='que-result-error'&gt;에러입니다. 문제를 다시 풀어주세요.&lt;&#47;p&gt; &lt;p class='que-result-errorname'&gt;에러명 : {e}&lt;&#47;p&gt;"
+                    js.document.querySelector('#result_desc').innerHTML = result
+
+
+            def multiline_eval(expr, ctx={}):
+                results = []
+                for node in ast.parse(expr).body:
+                    if isinstance(node, ast.Expr):
+                        result = eval(compile(ast.Expression(node.value), 'string', 'eval'), ctx)
+                        results.append(result)            
+                    else:
+                        module = ast.Module([node], type_ignores=[])
+                        results.append(exec(compile(module, 'string', 'exec'), ctx))
+                return '\n'.join(map(str, results))[5:]
+
+            button_run = Element("btn-run")
+            button_run.element.onclick = result
+
+            for i in range(1, 101):
+                button_render = Element(f'q{i}')
+                # button_render.element.onclick = render
+            </py-script>
+        </section>
+      </main>
+    </div>
+  </div>
+  <footer>
+    <p>Copyright 2023. <strong>WENIV</strong> All rights reserved.</p>
+  </footer>
+</body>
+</html>
