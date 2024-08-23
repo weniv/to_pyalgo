@@ -98,3 +98,85 @@ test_cases = [
 
 for i, case in enumerate(test_cases, 1):
     print(f"테스트 케이스 {i} 결과:", solution(case))
+
+
+# 3
+def solution(data):
+    date, waiting = data
+    # print(date, waiting)
+    days_in_month = [1024, 512, 256, 128, 64, 32, 16, 8, 4, 2]
+    boats = [25, 15, 15, 15, 15, 15]
+
+    def add_days(year, month, day, days):
+        while days > 0:
+            if day + days <= days_in_month[month - 1]:
+                day += days
+                break
+            days -= days_in_month[month - 1] - day + 1
+            day = 1
+            month += 1
+            if month > 10:
+                year += 1
+                month = 1
+        return year, month, day
+
+    year, month, day = map(int, date.split("."))
+
+    people_per_day = 1200  # 하루 탑승할 수 있는 인원
+    days = waiting // people_per_day
+    remaining = waiting % people_per_day
+
+    # 출발해야하는연도, 출발해야하는월, 출발해야하는일 = 함수(입력 연도, 입력 월, 입력일, 남은일)
+    year, month, day = add_days(year, month, day, days)
+    # print(year, month, day)
+
+    hour, minute = 9, 0
+    if remaining > 0:
+        hour = remaining // 100 + 9
+        # print(hour)
+        minute = remaining % 100
+
+        if minute == 0 or minute == 99:
+            hour += 1
+        if hour == 21:
+            hour = 9
+            day += 1
+            if day == days_in_month[month - 1] + 1:
+                day = 1
+                month += 1
+                if month > 10:
+                    year += 1
+                    month = 1
+
+        if 23 >= minute > 0:
+            minute = 0
+        elif 38 >= minute:
+            minute = 10
+        elif 53 >= minute:
+            minute = 20
+        elif 68 >= minute:
+            minute = 30
+        elif 83 >= minute:
+            minute = 40
+        elif 98 >= minute:
+            minute = 50
+
+    return f"{year:04d}.{month:02d}.{day:04d} {hour:02d}:{minute:02d}"
+
+
+# 테스트
+test_cases = [
+    ["2025.09.0001", 1],
+    ["2025.09.0001", 1200],
+    ["2025.09.0001", 1201],
+    ["2025.09.0001", 2400],
+    ["2025.09.0001", 4800],
+    ["2025.09.0001", 14000605],
+    ["2025.10.0001", 2046],
+    ["2025.10.0002", 1],
+]
+
+for testcase in test_cases:
+    # print(f"Input: {case}")
+    # print(f"Output: {solution(*case)}\n")
+    print(solution(testcase))
