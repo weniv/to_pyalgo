@@ -180,3 +180,184 @@ for testcase in test_cases:
     # print(f"Input: {case}")
     # print(f"Output: {solution(*case)}\n")
     print(solution(testcase))
+
+
+# 4
+def solution(animals):
+    chairs = []
+    time = 0
+
+    for animal in animals:
+        if animal in chairs:
+            # 이미 의자에 앉아있는 경우 (hit)
+            chairs.remove(animal)
+            chairs.append(animal)
+            time += 1
+        else:
+            if len(chairs) < 3:
+                # 빈 의자가 있는 경우
+                chairs.append(animal)
+                time += 60  # 1분 추가
+            else:
+                # 의자가 모두 차있는 경우
+                chairs.pop(0)
+                chairs.append(animal)
+                time += 60  # 1분 추가
+
+    minutes = time // 60
+    seconds = time % 60
+
+    return f"{minutes}분 {seconds}초"
+
+
+# 테스트
+test_cases = [
+    [
+        "척추동물",
+        "어류",
+        "척추동물",
+        "무척추동물",
+        "파충류",
+        "척추동물",
+        "어류",
+        "파충류",
+    ],
+    ["척추동물", "어류", "무척추동물", "척추동물", "어류", "무척추동물"],
+    ["무척추동물", "척추동물", "어류", "양서류", "파충류", "조류", "포유류"],
+    ["척추동물", "척추동물", "척추동물", "척추동물"],
+    ["어류", "파충류"],
+    [
+        "무척추동물",
+        "척추동물",
+        "어류",
+        "양서류",
+        "파충류",
+        "조류",
+        "포유류",
+        "척추동물",
+        "어류",
+        "양서류",
+        "파충류",
+        "조류",
+        "포유류",
+        "무척추동물",
+    ],
+]
+
+for i, case in enumerate(test_cases, 1):
+    print(f"테스트 케이스 {i}:")
+    print(f"입력: {case}")
+    print(f"출력: {solution(case)}")
+    print()
+
+
+# 5
+def solution(graph):
+    visited = []
+    stack = [100]
+
+    while stack:
+        n = stack.pop()
+        if n not in visited:
+            visited.append(n)
+            subset = graph[n] - set(visited)
+            if len(subset) == 0:
+                visited += stack
+                break
+            stack.append(min(subset))
+            print(stack)
+            print(visited)
+
+    small_chars = "".join([chr(num) for num in visited[1:]])
+
+    visited = []
+    stack = [100]
+
+    while stack:
+        n = stack.pop()
+        if n not in visited:
+            visited.append(n)
+            subset = graph[n] - set(visited)
+            if len(subset) == 0:
+                visited += stack
+                break
+            stack.append(max(subset))
+            print(stack)
+            print(visited)
+
+    large_chars = "".join([chr(num) for num in visited[1:]])
+
+    print(f"{large_chars} {small_chars}")
+
+    return f"{large_chars} {small_chars}"
+
+
+# 테스트
+test_graph = {
+    100: set([67, 66]),
+    67: set([100, 82, 63]),
+    66: set([100, 73, 69]),
+    82: set([67, 61, 79]),
+    63: set([67]),
+    73: set([66]),
+    69: set([66, 65, 81]),
+    61: set([82]),
+    79: set([82, 87, 77]),
+    65: set([69, 84, 99]),
+    81: set([69]),
+    87: set([79, 31, 78]),
+    77: set([79]),
+    84: set([65]),
+    99: set([65]),
+    31: set([87]),
+    78: set([87]),
+}
+
+print(solution(test_graph))
+
+
+# 6
+def solution(data):
+    import numpy as np
+
+    farm1, farm2 = data
+    farm1 = np.array(farm1)
+    farm2 = np.rot90(farm2, 1)
+
+    sum_farm = farm1 + farm2
+
+    def row_to_unicode(row):
+        num = int("".join(map(str, row)), 8)
+        return chr(num) if 65 <= num <= 90 else str(num)
+
+    result = "".join(row_to_unicode(row) for row in sum_farm)
+    return result
+
+
+# 테스트
+test_cases = [
+    (
+        [
+            [1, 0, 0, 0, 0],
+            [0, 0, 1, 0, 1],
+            [0, 0, 1, 0, 1],
+            [0, 0, 1, 0, 1],
+            [0, 0, 1, 0, 1],
+        ],
+        [
+            [0, 0, 0, 0, 1],
+            [0, 0, 0, 0, 3],
+            [0, 0, 0, 0, 4],
+            [0, 2, 0, 0, 2],
+            [4, 5, 0, 2, 0],
+        ],
+    ),
+    (
+        [[0, 1, 0, 1], [0, 1, 1, 0], [0, 1, 0, 0], [0, 0, 1, 1]],
+        [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 1, 0], [1, 1, 0, 1]],
+    ),
+]
+
+for i, data in enumerate(test_cases, 1):
+    print(f"테스트 케이스 {i}:")
+    print(f"출력: {solution(data)}")
